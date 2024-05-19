@@ -1,0 +1,16 @@
+<!-- quotes/templates/quotes/author_detail.html -->
+{% extends 'quotes/base.html' %}
+{% load extract %}
+
+{% block title %}{{ author.fullname }}{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8">
+      <h2>{{ author.fullname }}</h2>
+      <p><strong>Born_date:</strong> {{ author.born_date }}</p>
+      <p><strong>Born_location:</strong> {{ author.born_location }}</p>
+      <p><strong>Description:</strong> {{ author.description }}</p>
+    </div>
+  </div>
+{% endblock %}

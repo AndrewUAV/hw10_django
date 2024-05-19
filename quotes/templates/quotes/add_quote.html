@@ -1,0 +1,38 @@
+{% extends 'quotes/base.html' %}
+
+{% block title %}Add quote - Quotes{% endblock %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Add quote</h2>
+    <form method="post" action="{% url 'quotes:add_quote' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.quote.label_tag }}
+        {{ form.quote }}
+      </div>
+
+      <div class="form-group">
+        {{ form.author.label_tag }}
+        {{ form.author }}
+        {% if form.author.errors %}
+          <small class="text-danger">{{ form.author.errors }}</small>
+        {% endif %}
+        <p class="text-muted">if author is not exist in list just <a href="{% url 'quotes:add_author' %}">add author</a>.</p>
+      </div>
+
+      <div class="form-group">
+        {{ form.tags.label_tag }}
+        {{ form.tags }}
+      </div>
+
+      <div class="form-group">
+        <label for="new_tags">Add new Tags:</label>
+        <input type="text" class="form-control" id="new_tags" name="new_tags" placeholder="Enter new tags, separating them with commas">
+        <small class="form-text text-muted">Add new tags, separating them with commas.</small>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Quote</button>
+    </form>
+  </div>
+{% endblock %}
